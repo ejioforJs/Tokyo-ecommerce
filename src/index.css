@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-hover {
+  @apply hover:text-main2-color duration-500 cursor-pointer;
+}
+.footer-icon{
+  @apply text-white cursor-pointer flex items-center justify-center hover:bg-white hover:text-main-color bg-menu-color w-9 h-9 rounded-full duration-500
+}
+.footer-text{
+  @apply hover:text-white hover:translate-x-2 duration-500 cursor-pointer
+}
+.dropdown-text{
+  @apply hover:text-main2-color hover:translate-x-2 duration-500 cursor-pointer
+}
+/* .about-teams{
+  @apply bg-white basis-1/4 pt-5 pb-8 flex flex-col gap-5 justify-content items-center
+} */
+
+.slick-prev {
+  left: 3% !important;
+  z-index: 1;
+}
+.slick-next {
+  right: 3% !important;
+  z-index: 1;
+}
+.link-underline{
+  border-bottom-width: 0;
+  background-image:linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .5s ease-in-out
+}
+.link-underline-black{
+  background-image: linear-gradient(transparent, transparent),linear-gradient(rgb(255,54,93), rgb(255,54,93))
+}
+.link-underline:hover{
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  cursor: pointer;
+}
+.link-underline-active{
+  background-image: linear-gradient(transparent, transparent),linear-gradient(rgb(255,54,93), rgb(255,54,93));
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .5s ease-in-out;
+  border-bottom-width: 0;
+  cursor: pointer;
+  color: black;
+}
+.small-text{
+  font-size: 6px;
+}
+.medium-text{
+  font-size:8px;
+}
