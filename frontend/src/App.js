@@ -97,7 +97,7 @@ function App({ color }) {
         ></ToastContainer>
         <Tooltip label="Hello?? do you need help?? click here to chat me up!!" showDelay="8000" hasArrow placement="left">
           <div className='z-50 cursor-pointer fixed block shadow-lg text-main2-color bottom-8 right-8 text-5xl'>
-          <BsFillChatDotsFill />
+          <a href="https://wa.me/2348075721644"><BsFillChatDotsFill /></a> 
         </div>
         </Tooltip>
         <div className={`fixed ${sidecart || sidewish || sidenav ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'} inset-0 bg-sidebar-overlay duration-500 z-50 bg-opacity-50 overflow-y-auto h-full w-full`}></div>

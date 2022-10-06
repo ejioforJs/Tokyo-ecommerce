@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaStarOfLife } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+// import { FaStarOfLife } from 'react-icons/fa';
+// import { toast } from 'react-toastify';
 import LoginUserComponent from '../components/LoginUserComponent';
 import RegisterUserComponent from '../components/RegisterUserComponent';
 import { Store } from '../Store';
@@ -10,13 +10,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function UserScreen() {
-  const {search} = useLocation()
+  // const {search} = useLocation()
   const navigate = useNavigate()
-  const redirectInUrl = new URLSearchParams(search).get('redirect')
-  const redirect = redirectInUrl ? redirectInUrl : '/'
+  // const redirectInUrl = new URLSearchParams(search).get('redirect')
+  // const redirect = redirectInUrl ? redirectInUrl : '/'
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const {userInfo} = state
 
 

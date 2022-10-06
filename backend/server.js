@@ -5,6 +5,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js'
 import blogRouter from './routes/blogRoutes.js'
 import userRouter from './routes/userRoutes.js';
+import path from 'path'
 
 dotenv.config();
 
@@ -26,6 +27,9 @@ app.use('/api/seed', seedRouter)
 app.use('/api/products', productRouter)
 app.use('/api/blogs', blogRouter)
 app.use('/api/users', userRouter)
+
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname, )))
 
 app.use((err,req,res,next) => {
     res.status(500).send({message:err.message})
