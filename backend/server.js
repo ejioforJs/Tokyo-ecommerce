@@ -28,8 +28,11 @@ app.use('/api/products', productRouter)
 app.use('/api/blogs', blogRouter)
 app.use('/api/users', userRouter)
 
-const __dirname = path.resolve()
-app.use(express.static(path.join(__dirname, )))
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 
 app.use((err,req,res,next) => {
     res.status(500).send({message:err.message})
@@ -37,7 +40,7 @@ app.use((err,req,res,next) => {
 
 const port = process.env.PORT || 4000;
 app.listen(port, () =>{
-    console.log(`server start at localhost://${port}`)
+    console.log(`serve at http://localhost:${port}`)
 })
 
 
