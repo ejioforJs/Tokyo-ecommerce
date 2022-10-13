@@ -4,11 +4,11 @@
   "private": true,
   "engines": {
     "node": "16.15.0",
-    "npm":"8.5.5"
+    "npm": "8.5.5"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.8",
-    "@emotion/react": "^11.10.0",
+    "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.0",
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^1.0.6",
