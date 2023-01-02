@@ -80,9 +80,20 @@ const reducer = (state, action) => {
         sortPriceLTH: false,
         sortPriceHTL: true,
       };
+      case 'ALL_SUCCESS':
+      return {
+        ...state,
+        all: true,
+        phone: false,
+        phoneAccessories: false,
+        laptop: false,
+        laptopAccessories: false,
+        television: false,
+      };
     case 'PHONE_SUCCESS':
       return {
         ...state,
+        all: false,
         phone: true,
         phoneAccessories: false,
         laptop: false,
@@ -92,6 +103,7 @@ const reducer = (state, action) => {
     case 'PHONE_ACCESSORIES_SUCCESS':
       return {
         ...state,
+        all: false,
         phone: false,
         phoneAccessories: true,
         laptop: false,
@@ -101,6 +113,7 @@ const reducer = (state, action) => {
     case 'LAPTOP_SUCCESS':
       return {
         ...state,
+        all: false,
         phone: false,
         phoneAccessories: false,
         laptop: true,
@@ -110,6 +123,7 @@ const reducer = (state, action) => {
     case 'LAPTOP_ACCESSORIES_SUCCESS':
       return {
         ...state,
+        all: false,
         phone: false,
         phoneAccessories: false,
         laptop: false,
@@ -119,12 +133,23 @@ const reducer = (state, action) => {
     case 'TELEVISION_SUCCESS':
       return {
         ...state,
+        all: false,
         phone: false,
         phoneAccessories: false,
         laptop: false,
         laptopAccessories: false,
         television: true,
       };
+    case 'SEARCH_SUCCESS':
+      return {
+        ...state, 
+        all: false,
+        phone: false,
+        phoneAccessories: false,
+        laptop: false,
+        laptopAccessories: false,
+        television: false
+      }
     default:
       return state;
   }
@@ -149,6 +174,7 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
       sortNewnessHTL,
       sortPriceLTH,
       sortPriceHTL,
+      all,
       phone,
       phoneAccessories,
       laptop,
@@ -166,6 +192,7 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
     sortNewnessHTL: false,
     sortPriceLTH: false,
     sortPriceHTL: false,
+    all: false,
     phone: false,
     phoneAccessories: false,
     laptop: false,
@@ -190,6 +217,12 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
     AOS.init();
   }, []);
 
+  useEffect(() => {
+    if(search) {
+      dispatch({type:"SEARCH_SUCCESS"})
+    }
+  }, [search])
+
   const filteredProducts = products.filter((product) => {
     if (search) {
       if (
@@ -198,6 +231,9 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
       ) {
         return product;
       }
+    }
+    if(all){
+      return product
     }
     if (phone) {
       if (product.category.toLowerCase().includes('phone')) {
@@ -226,6 +262,7 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
     }
     if (
       !search &&
+      !all &&
       !phone &&
       !phoneAccessories &&
       !laptop &&
@@ -233,6 +270,9 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
       !television
     ) {
       return product;
+    }
+    else{
+      return false
     }
   });
 
@@ -260,11 +300,12 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
     : sortAverageRatingHTL
     ? filteredProducts.sort(function (a, b) {
         return (
-          b.reviews.reduce((a, c) => a + c.rating, 0) / a.reviews.length -
-          a.reviews.reduce((a, c) => a + c.rating, 0) / b.reviews.length
+          b.reviews.reduce((a, c) => a + c.rating, 0) / b.reviews.length -
+          a.reviews.reduce((a, c) => a + c.rating, 0) / a.reviews.length
         );
       })
     : null;
+
   const endOffset = itemOffset + itemsPerPage;
   // setCurrentProducts(products.slice(itemOffset, endOffset))
   // setPageCount(Math.ceil(products.length / itemsPerPage))
@@ -306,6 +347,17 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
               CATEGORIES
             </p>
             <div className="flex flex-col gap-3 text-sm pl-2">
+            <p
+                onClick={() => {
+                  setSearch('');
+                  dispatch({ type: 'ALL_SUCCESS' });
+                }}
+                className={`${
+                  all ? 'text-main2-color' : 'text-gray-500'
+                } dropdown-text`}
+              >
+                All
+              </p>
               <p
                 onClick={() => {
                   setSearch('');
@@ -375,15 +427,15 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
               </span>{' '}
               <span className="text-sm">
                 showing {itemOffset} - {endOffset} of {sortedProducts.length}{' '}
-                items
+                results
               </span>
             </p>
             <div
             data-aos="fade-up"
             data-aos-duration="1500"
-            className="text-sm text-gray-500 flex flex-row gap-2 items-center">
+            className="text-sm text-gray-500 flex flex-row gap-2 items-center z-40">
               <span>Sort By:</span>
-              <div>
+              <div className="relative">
                 <div
                   onClick={() =>
                     dropdownPopoverShow
@@ -397,9 +449,9 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
                     : sortAverageRatingHTL
                     ? 'Sort by average rating: high to low'
                     : sortNewnessLTH
-                    ? 'Sort by newness: low to high'
+                    ? 'Sort by newness: old to new'
                     : sortNewnessHTL
-                    ? 'Sort by newness: high to low'
+                    ? 'Sort by newness: new to old'
                     : sortPriceLTH
                     ? 'Sort by price: low to high'
                     : sortPriceHTL
@@ -410,8 +462,8 @@ export default function ShopScreen({ itemsPerPage, search, setSearch }) {
                   </span>
                 </div>
                 <div
-                  className={`bg-white text-base absolute z-0 right-7 overflow-hidden duration-500 rounded shadow-2xl mb-1
-          ${dropdownPopoverShow ? 'max-h-60 py-5 px-6' : 'max-h-0'}`}
+                  className={`bg-white absolute overflow-hidden duration-300 rounded shadow-2xl mb-1
+          ${dropdownPopoverShow ? 'opacity-100 py-5 px-6' : 'opacity-0'}`}
                 >
                   <ul className="flex flex-col gap-3 text-sm">
                     <li

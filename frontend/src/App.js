@@ -81,7 +81,7 @@ function App({ color }) {
 
   return (
     <BrowserRouter>
-      <div className="font-good-font text-gray-800">
+      <div className="text-gray-800 font-good-font">
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -96,7 +96,7 @@ function App({ color }) {
           limit={1}
         ></ToastContainer>
         <Tooltip label="Hello?? do you need help?? click here to chat me up!!" showDelay="8000" hasArrow placement="left">
-          <div className='z-50 cursor-pointer fixed block shadow-lg text-main2-color bottom-8 right-8 text-5xl'>
+          <div className='fixed z-50 block text-5xl shadow-lg cursor-pointer text-main2-color bottom-8 right-8'>
           <a href="https://wa.me/2348075721644"><BsFillChatDotsFill /></a> 
         </div>
         </Tooltip>
@@ -108,27 +108,27 @@ function App({ color }) {
       >
         <div
             onClick={() => setSidesearch(false)}
-            className="absolute text-white nav-hover top-10 cursor-pointer right-8 font-bold text-2xl"
+            className="absolute text-2xl font-bold text-white cursor-pointer nav-hover top-10 right-8"
           >
             <AiOutlineClose className='font-bold' />
           </div>
-        <div className="text-gray-500 w-full">
-            <div className="flex justify-center flex-col text-sm gap-3 py-4 w-full">
+        <div className="w-full text-gray-500">
+            <div className="flex flex-col justify-center w-full gap-3 py-4 text-sm">
               <input
                 required
                 autoFocus
                 value={search}
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
-                className="border-2 border-transparent text-center text-xl text-white border-b-white py-2 outline-none bg-transparent mx-auto w-4/5 duration-500 focus:border-b-main2-color"
+                className="w-4/5 py-2 mx-auto text-xl text-center text-white duration-500 bg-transparent border-2 border-transparent outline-none border-b-white focus:border-b-main2-color"
                 name="search"
                 type="text"
                 placeholder="type keyword(s) here"
               />
             </div>
-            <div onClick={() => setSidesearch(false)} className="flex justify-center flex-col text-sm gap-3 py-4 w-full">
+            <div onClick={() => setSidesearch(false)} className="flex flex-col justify-center w-full gap-3 py-4 text-sm">
               <Link
                 to="/shop"
-                className="bg-main2-color outline-none mx-auto text-white text-sm font-bold px-7 rounded py-3 hover:bg-transparent hover:border-2 hover:border-main2-color duration-500"
+                className="py-3 mx-auto text-sm font-bold text-white duration-500 rounded outline-none bg-main2-color px-7 hover:bg-transparent hover:border-2 hover:border-main2-color"
               >
                 SEARCH
               </Link>
@@ -136,11 +136,11 @@ function App({ color }) {
             </div>
       </div>
         <header className="sticky top-0 z-40">
-          <div className="w-full bg-main-color py-5 flex flex-row justify-between">
-            <div className="basis-1/4 pl-4 lg:pl-auto justify-start lg:justify-center flex items-center grow shrink">
-              <img src={logo} alt="logo" className="w-28 sm:w-32 h-8 cursor-pointer" />
+          <div className="flex flex-row justify-between w-full py-5 bg-main-color">
+            <div className="flex items-center justify-start pl-4 basis-1/4 lg:pl-auto lg:justify-center grow shrink">
+              <img src={logo} alt="logo" className="h-8 cursor-pointer w-28 sm:w-32" />
             </div>
-            <ul className="hidden text-sm items-center font-bold justify-between lg:flex flex-row basis-2/4 grow shrink">
+            <ul className="flex-row items-center justify-between hidden text-sm font-bold lg:flex basis-2/4 grow shrink">
               <li className="text-white nav-hover">
                 <Link to="/">HOME</Link>
               </li>
@@ -157,7 +157,7 @@ function App({ color }) {
                     setDropdownPopoverShow(true);
                     // : openDropdownPopover();
                   }}
-                  className="nav-hover text-white flex flex-row gap-1 items-center"
+                  className="flex flex-row items-center gap-1 text-white nav-hover"
                 >
                   <span>PAGES</span>
                   <span>
@@ -186,7 +186,7 @@ function App({ color }) {
                     setAccountdropdown(true);
                     // : openDropdownPopover();
                   }}
-                  className="nav-hover text-white flex flex-row gap-1 items-center"
+                  className="flex flex-row items-center gap-1 text-white nav-hover"
                 >
                   <span>ACCOUNT</span>
                   <span>
@@ -204,21 +204,21 @@ function App({ color }) {
                 </div>
                 {/* </div> */}
               </li>
-              <li className="nav-hover text-white">
+              <li className="text-white nav-hover">
                 <Link to="/aboutus">ABOUT US</Link>
               </li>
-              <li className="nav-hover text-white">
+              <li className="text-white nav-hover">
                 <Link to="/contactus">CONTACT US</Link>
               </li>
             </ul>
-            <ul className="text-white items-center flex flex-row text-2xl font-medium justify-end lg:justify-center gap-x-6 sm:gap-x-7 pr-4 sm:pr-5 basis-2/4 sm:basis-1/4 grow shrink">
+            <ul className="flex flex-row items-center justify-end pr-4 text-2xl font-medium text-white lg:justify-center gap-x-6 sm:gap-x-7 sm:pr-5 basis-2/4 sm:basis-1/4 grow shrink">
               <li
                 onClick={() => setSidewish(!sidewish)}
-                className="nav-hover relative"
+                className="relative nav-hover"
               >
                 <AiOutlineHeart />
                 {wishlist.length > 0 && (
-                  <div className="absolute w-5 h-5 bg-main2-color text-sm top-3 left-3 rounded-full font-bold text-white">
+                  <div className="absolute w-5 h-5 text-sm font-bold text-white rounded-full bg-main2-color top-3 left-3">
                     <div className="flex items-center justify-center ">
                       {wishlist.length}
                     </div>
@@ -227,11 +227,11 @@ function App({ color }) {
               </li>
               <li
                 onClick={() => setSidecart(!sidecart)}
-                className="nav-hover relative"
+                className="relative nav-hover"
               >
                 <AiOutlineShoppingCart />
                 {cartItems.length > 0 && (
-                  <div className="absolute w-5 h-5 bg-main2-color text-sm top-3 left-4 rounded-full font-bold text-white">
+                  <div className="absolute w-5 h-5 text-sm font-bold text-white rounded-full bg-main2-color top-3 left-4">
                     <div className="flex items-center justify-center ">
                       {cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </div>
@@ -245,7 +245,7 @@ function App({ color }) {
               </li>
               <li
                 onClick={() => setSidenav(!sidenav)}
-                className="nav-hover flex items-center justify-center bg-menu-color w-12 h-12 rounded-full duration-500 hover:text-main2-color hover:bg-menu2-color"
+                className="flex items-center justify-center w-12 h-12 duration-500 rounded-full nav-hover bg-menu-color hover:text-main2-color hover:bg-menu2-color"
               >
                 <GiHamburgerMenu />
               </li>
@@ -259,19 +259,19 @@ function App({ color }) {
         >
           <div
             onClick={() => setSidecart(false)}
-            className="absolute nav-hover top-6 cursor-pointer right-8 font-bold text-2xl"
+            className="absolute text-2xl font-bold cursor-pointer nav-hover top-6 right-8"
           >
             <AiOutlineClose />
           </div>
-          <ul className="mt-12 flex flex-col gap-4 p-5">
-            <li className="text-xl mb-4">Shopping Cart</li>
+          <ul className="flex flex-col gap-4 p-5 mt-12">
+            <li className="mb-4 text-xl">Shopping Cart</li>
             {cartItems.map((cartitem) => (
               <li
                 className="flex flex-row items-center gap-5 text-gray-500"
                 key={cartitem._id}
               >
                 <div className="flex flex-row">
-                  <img className="h-24 w-20" src={cartitem.image1} alt="" />
+                  <img className="w-20 h-24" src={cartitem.image1} alt="" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <p className="font-bold">{cartitem.name}</p>
@@ -281,19 +281,19 @@ function App({ color }) {
                 </div>
                 <div
                   onClick={() => removeItemHandler(cartitem)}
-                  className="text-red-500 right-4 cursor-pointer absolute"
+                  className="absolute text-red-500 cursor-pointer right-4"
                 >
                   <AiFillDelete />
                 </div>
               </li>
             ))}
           </ul>
-          <div className="flex flex-row justify-between p-5 items-center text-xl text-gray-500">
+          <div className="flex flex-row items-center justify-between p-5 text-xl text-gray-500">
             <p className='font-bold'>Subtotal:</p>
             <p>$ {cartItems.reduce((a,c) => a + c.price*c.quantity,0)}</p>
           </div>
           <div className="p-5">
-          <div className='py-2 bg-main2-color text-white font-bold text-center rounded-md'>
+          <div className='py-2 font-bold text-center text-white rounded-md bg-main2-color'>
             <Link to="/userscreen">
               CHECKOUT
             </Link>
@@ -307,19 +307,19 @@ function App({ color }) {
         >
           <div
             onClick={() => setSidewish(false)}
-            className="absolute nav-hover top-6 cursor-pointer right-8 font-bold text-2xl"
+            className="absolute text-2xl font-bold cursor-pointer nav-hover top-6 right-8"
           >
             <AiOutlineClose />
           </div>
-          <ul className="mt-12 flex flex-col gap-4 p-5">
-            <li className="text-xl mb-4">Wishlist</li>
+          <ul className="flex flex-col gap-4 p-5 mt-12">
+            <li className="mb-4 text-xl">Wishlist</li>
             {wishlist.map((wishitem) => (
               <li
                 className="flex flex-row items-center gap-5 text-gray-500"
                 key={wishitem._id}
               >
                 <div className="flex flex-row">
-                  <img className="h-24 w-20" src={wishitem.image1} alt="" />
+                  <img className="w-20 h-24" src={wishitem.image1} alt="" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <p className="font-bold">{wishitem.name}</p>
@@ -329,7 +329,7 @@ function App({ color }) {
                 </div>
                 <div
                   onClick={() => removeWishHandler(wishitem)}
-                  className="text-red-500 right-4 cursor-pointer absolute"
+                  className="absolute text-red-500 cursor-pointer right-4"
                 >
                   <AiFillDelete />
                 </div>
@@ -344,11 +344,11 @@ function App({ color }) {
         >
           <div
             onClick={() => setSidenav(false)}
-            className="absolute nav-hover top-6 cursor-pointer right-8 font-bold text-2xl"
+            className="absolute text-2xl font-bold cursor-pointer nav-hover top-6 right-8"
           >
             <AiOutlineClose />
           </div>
-          <ul className="lg:hidden flex flex-col pl-8 mt-16 gap-3">
+          <ul className="flex flex-col gap-3 pl-8 mt-16 lg:hidden">
             <li onClick={() => setSidenav(false)} 
             className="nav-hover"><Link to="/">HOME</Link></li>
             <li 
@@ -364,7 +364,7 @@ function App({ color }) {
                     setDropdownPopoverShow(!dropdownPopoverShow);
                     // : openDropdownPopover();
                   }}
-                  className="nav-hover text-white flex flex-row gap-1 items-center"
+                  className="flex flex-row items-center gap-1 text-white nav-hover"
                 >
                   <span>PAGES</span>
                   <span>
@@ -399,7 +399,7 @@ function App({ color }) {
                     setAccountdropdown(true);
                     // : openDropdownPopover();
                   }}
-                  className="nav-hover text-white flex flex-row gap-1 items-center"
+                  className="flex flex-row items-center gap-1 text-white nav-hover"
                 >
                   <span>ACCOUNT</span>
                   <span>
@@ -428,11 +428,11 @@ function App({ color }) {
             onClick={() => setSidenav(false)}
             className="nav-hover"><Link to="/contactus">CONTACT US</Link></li>
           </ul>
-          <div className="flex flex-col gap-7 justify-center items-center mt-10 sm:mt-24 px-5">
+          <div className="flex flex-col items-center justify-center px-5 mt-10 gap-7 sm:mt-24">
             <div>
               <img src={logo} className="w-32 h-8" alt="logo" />
             </div>
-            <div className="leading-4 items-center flex flex-col text-white text-sm">
+            <div className="flex flex-col items-center text-sm leading-4 text-white">
               <p>Address: odim street along obukpa road.</p>
               <br />
               <p>Call Us: 09013906114,07032888613.</p>
@@ -468,17 +468,17 @@ function App({ color }) {
             <Route path="/shop" element={<ShopScreen search={search} setSearch={setSearch} itemsPerPage={4} />} />
           </Routes>
         </div>
-        <footer className="bg-main-color p-4 sm:p-10 mt-20">
-          <div className="flex flex-col sm:flex-row justify-between gap-y-8">
+        <footer className="p-4 mt-20 bg-main-color sm:p-10">
+          <div className="flex flex-col justify-between sm:flex-row gap-y-8">
             <div 
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-2 basis-1/5">
-              <div className="text-white font-bold">
+              <div className="font-bold text-white">
                 <p>INFORMATION</p>
               </div>
-              <hr className="border-2 border-main2-color w-16" />
-              <div className="text-footer-color flex flex-col gap-y-2 text-sm mt-2">
+              <hr className="w-16 border-2 border-main2-color" />
+              <div className="flex flex-col mt-2 text-sm text-footer-color gap-y-2">
                 <p className="footer-text">Delivery Infomation</p>
                 <p className="footer-text">Terms & Conditions</p>
                 <p className="footer-text">Contact</p>
@@ -489,11 +489,11 @@ function App({ color }) {
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-2 basis-1/5">
-              <div className="text-white font-bold">
+              <div className="font-bold text-white">
                 <p>MY ACCOUNT</p>
               </div>
-              <hr className="border-2 border-main2-color w-16" />
-              <div className="text-footer-color flex flex-col gap-y-2 text-sm mt-2">
+              <hr className="w-16 border-2 border-main2-color" />
+              <div className="flex flex-col mt-2 text-sm text-footer-color gap-y-2">
                 <p className="footer-text">My account</p>
                 <p className="footer-text">Wishlist</p>
                 <p className="footer-text">Privacy Policy</p>
@@ -505,11 +505,11 @@ function App({ color }) {
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-2 basis-1/5">
-              <div className="text-white font-bold">
+              <div className="font-bold text-white">
                 <p>CATEGORIES</p>
               </div>
-              <hr className="border-2 border-main2-color w-16" />
-              <div className="text-footer-color flex flex-col gap-y-2 text-sm mt-2">
+              <hr className="w-16 border-2 border-main2-color" />
+              <div className="flex flex-col mt-2 text-sm text-footer-color gap-y-2">
                 <p className="footer-text">Decorative</p>
                 <p className="footer-text">Kitchen utensils</p>
                 <p className="footer-text">Chair and Bar stools</p>
@@ -521,28 +521,28 @@ function App({ color }) {
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-2 basis-1/5">
-              <div className="text-white font-bold">
+              <div className="font-bold text-white">
                 <p>ABOUT US</p>
               </div>
-              <hr className="border-2 border-main2-color w-16" />
-              <div className="text-footer-color flex flex-col gap-y-2 text-sm mt-2">
+              <hr className="w-16 border-2 border-main2-color" />
+              <div className="flex flex-col mt-2 text-sm text-footer-color gap-y-2">
                 <p className="leading-6">
                   We are a team of designers and developers that create high
                   quality Magento, Prestashop, Opencart.
                 </p>
-                <p className="leading-6 mt-2">
+                <p className="mt-2 leading-6">
                   Address: Your address goes here. Email: demo@example.com
                 </p>
               </div>
             </div>
           </div>
-          <hr className="border-1 border-gray-500 mt-12" />
-          <div className="mt-12 flex flex-col sm:flex-row gap-8 sm:gap-14">
+          <hr className="mt-12 border-gray-500 border-1" />
+          <div className="flex flex-col gap-8 mt-12 sm:flex-row sm:gap-14">
             <div 
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-4">
-              <p className="text-white font-bold">FOLLOW US</p>
+              <p className="font-bold text-white">FOLLOW US</p>
               <div className="flex flex-row gap-x-4">
                 <div className="footer-icon">
                   <FaFacebookF />
@@ -562,27 +562,27 @@ function App({ color }) {
             data-aos="fade-up"
             data-aos-duration="1500"
             className="flex flex-col gap-y-4">
-              <p className="text-white font-bold">
+              <p className="font-bold text-white">
                 DON'T MISS OUT ON THE LATEST PRODUCTS
               </p>
               <div className="flex flex-row">
                 <input
-                  className="text-sm w-96 p-3 border-solid outline-none rounded-l-md duration-500 border-footer-color focus:border-main2-color border-t-2 border-l-2 border-b-2 bg-main-color text-footer-color"
+                  className="p-3 text-sm duration-500 border-t-2 border-b-2 border-l-2 border-solid outline-none w-96 rounded-l-md border-footer-color focus:border-main2-color bg-main-color text-footer-color"
                   type="text"
                 />
-                <button className="p-3 bg-main2-color duration-500 hover:bg-white rounded-r-md text-white hover:text-main2-color text-sm font-bold">
+                <button className="p-3 text-sm font-bold text-white duration-500 bg-main2-color hover:bg-white rounded-r-md hover:text-main2-color">
                   SUBSCRIBE!
                 </button>
               </div>
             </div>
             <div></div>
           </div>
-          <hr className="border-1 border-gray-500 mt-8 sm:mt-12" />
+          <hr className="mt-8 border-gray-500 border-1 sm:mt-12" />
           <div 
           data-aos="fade-up"
           data-aos-duration="1500"
           className="mt-12">
-            <div className="text-footer-color text-sm">
+            <div className="text-sm text-footer-color">
               © 2022 <span className="text-white">TOKYOELECTRONICS.</span> MADE
               WITH vscode BY <span className="text-white">JWEBOSS</span>
             </div>

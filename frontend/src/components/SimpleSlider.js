@@ -5,9 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import image1 from '../assets/hero-slider-1.jpg';
 import image2 from '../assets/hero-slider-2.jpg';
 import { Link } from 'react-router-dom';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -87,7 +85,7 @@ export class SimpleSlider extends Component {
             <img className='h-72 sm:h-auto' src={image2} alt="" />
             <div className="absolute top-0 left-0 mt-20 ml-5 sm:mt-52 sm:ml-10">
               <div className="text-sm mb-1.5">NEW COLLECTION</div>
-              <div className="text-xl sm:text-3xl md:text-2xl leading-6 font-bold">
+              <div className="text-xl sm:text-3xl leading-6 font-bold">
                 Best Of HiFi <br /> Loud Speaker
               </div>
               <div className="bg-main2-color px-5 py-2.5 mt-3 sm:mt-6 rounded-md text-white text-sm font-bold text-center align-middle">
